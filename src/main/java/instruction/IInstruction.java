@@ -15,9 +15,9 @@ abstract public class IInstruction extends Instruction{
     }
 
     public void getReady() {
-        registerS = Integer.parseInt(instruction.substring(6, 11));
-        registerT = Integer.parseInt(instruction.substring(11, 16));
-        immediate = Integer.parseInt(instruction.substring(16, 32));
+        registerS = Integer.parseInt(instruction.substring(6, 11), 2);
+        registerT = Integer.parseInt(instruction.substring(11, 16), 2);
+        immediate = Integer.parseInt(instruction.substring(16, 32), 2);
         executionReady = true;
     }
 }

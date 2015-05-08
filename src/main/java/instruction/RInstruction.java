@@ -15,11 +15,11 @@ abstract public class RInstruction extends Instruction {
     }
 
     public void getReady() {
-        registerS = Integer.parseInt(instruction.substring(6, 11));
-        registerT = Integer.parseInt(instruction.substring(11, 16));
-        registerD = Integer.parseInt(instruction.substring(16, 21));
-        shamt = Integer.parseInt(instruction.substring(21, 26));
-        function = Integer.parseInt(instruction.substring(26, 32));
+        registerS = Integer.parseInt(instruction.substring(6, 11), 2);
+        registerT = Integer.parseInt(instruction.substring(11, 16), 2);
+        registerD = Integer.parseInt(instruction.substring(16, 21), 2);
+        shamt = Integer.parseInt(instruction.substring(21, 26), 2);
+        function = Integer.parseInt(instruction.substring(26, 32), 2);
         executionReady = true;
     }
 
