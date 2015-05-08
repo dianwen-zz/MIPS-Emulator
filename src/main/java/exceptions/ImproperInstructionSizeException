@@ -1,0 +1,13 @@
+package main.java.exceptions;
+
+public class ImproperInstructionSizeException extends Exception {
+    int instructionSize;
+
+    public ImproperInstructionSizeException(int instructionSize) {
+        this.instructionSize = instructionSize;
+    }
+
+    public int getInstructionSize() {
+        return instructionSize;
+    }
+}
