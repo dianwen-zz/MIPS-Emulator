@@ -8,13 +8,12 @@ import main.java.exceptions.ImproperInstructionValueException;
  */
 abstract public class RInstruction extends Instruction {
 
-    int registerS, registerT, registerD, shamt, function;
+    protected int registerS, registerT, registerD, shamt, function;
 
     public RInstruction(String instruction) throws ImproperInstructionSizeException, ImproperInstructionValueException {
         super(instruction);
     }
 
-    @Override
     public void getReady() {
         registerS = Integer.parseInt(instruction.substring(6, 11));
         registerT = Integer.parseInt(instruction.substring(11, 16));

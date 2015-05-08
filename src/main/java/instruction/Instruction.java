@@ -24,7 +24,7 @@ abstract public class Instruction {
 
     abstract public void getReady();
 
-    void executeCheck() throws InstructionNotReadyException {
+    protected void executeCheck() throws InstructionNotReadyException {
         if(!executionReady) {
             throw new InstructionNotReadyException();
         }

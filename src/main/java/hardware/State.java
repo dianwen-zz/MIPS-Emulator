@@ -10,7 +10,7 @@ public class State {
     public static final int DEFAULT_REGISTER_SIZE = 32;
     public static final int DEFAULT_STACK_SIZE = 256;
 
-    int sp, ip;
+    private int sp, ip;
     private int[] register;
     private int[] stack;
 
