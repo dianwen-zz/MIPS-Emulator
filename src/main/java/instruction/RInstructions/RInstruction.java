@@ -1,7 +1,8 @@
-package main.java.instruction;
+package main.java.instruction.RInstructions;
 
 import main.java.exceptions.ImproperInstructionSizeException;
 import main.java.exceptions.ImproperInstructionValueException;
+import main.java.instruction.Instruction;
 
 /**
  * Created by dianwen on 5/8/15.
