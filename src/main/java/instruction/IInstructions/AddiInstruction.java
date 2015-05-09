@@ -1,4 +1,4 @@
-package main.java.instruction;
+package main.java.instruction.IInstructions;
 
 import main.java.exceptions.*;
 import main.java.hardware.State;
@@ -16,5 +16,7 @@ public class AddiInstruction extends IInstruction {
         super.executeCheck();
 
         int sum = s.getRegisterValue(registerS) + immediate;
+        s.setRegisterValue(registerT, sum);
+
     }
 }

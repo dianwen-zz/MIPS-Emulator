@@ -1,17 +1,18 @@
-package main.java.instruction;
+package main.java.instruction.IInstructions;
 
 import main.java.exceptions.ImproperInstructionSizeException;
 import main.java.exceptions.ImproperInstructionValueException;
+import main.java.instruction.Instruction;
 
 /**
  * Created by dianwen on 5/8/15.
  */
-abstract public class IInstruction extends Instruction{
+abstract public class IInstruction extends Instruction {
 
     protected int registerS, registerT, immediate;
 
-    public IInstruction(String instruction) throws ImproperInstructionSizeException, ImproperInstructionValueException {
-        super(instruction);
+    public IInstruction(String instructionValue) throws ImproperInstructionSizeException, ImproperInstructionValueException {
+        super(instructionValue);
     }
 
     public void getReady() {

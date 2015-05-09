@@ -10,14 +10,12 @@ abstract public class Instruction {
 
     public static final int INSTRUCTION_SIZE = 32;
 
-    boolean executionReady;
-    String instruction;
-    int opCode;
+    protected boolean executionReady;
+    protected String instruction;
 
     public Instruction(String instruction) throws ImproperInstructionSizeException, ImproperInstructionValueException {
         if(isValidInstruction(instruction)) {
             this.instruction = instruction;
-            opCode = Integer.parseInt(instruction.substring(0, 6));
             executionReady = false;
         }
     }
@@ -33,14 +31,14 @@ abstract public class Instruction {
     abstract public void execute(State s) throws InstructionNotReadyException, InvalidRegisterAccessException, InvalidRegisterWriteException;
 
     private boolean isValidInstruction(String s) throws ImproperInstructionSizeException, ImproperInstructionValueException {
-        if(instruction.length() != 32) {
-            throw new ImproperInstructionSizeException(instruction.length());
+        if(s.length() != 32) {
+            throw new ImproperInstructionSizeException(s.length());
         }
         try {
-            Integer.parseInt(instruction);
+            Integer.parseInt(s,2);
         }
         catch (Exception e){
-            throw new ImproperInstructionValueException(instruction);
+            throw new ImproperInstructionValueException(s);
         }
         return true;
     }

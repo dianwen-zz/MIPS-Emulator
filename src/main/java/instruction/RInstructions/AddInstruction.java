@@ -1,4 +1,4 @@
-package main.java.instruction;
+package main.java.instruction.RInstructions;
 
 import main.java.exceptions.*;
 import main.java.hardware.State;
