@@ -24,7 +24,7 @@ public class Emulator {
     public Emulator(File f, State s) throws InstructionsCouldNotBeLoadedException {
         factory = new InstructionFactory();
         emulatorState = s;
-        emulatorState.setSP(State.DEFAULT_STACK_SIZE -  1);
+        emulatorState.setSP(State.DEFAULT_STACK_SIZE - 1);
         emulatorState.setIP(0);
         try {
             loadInstructions(f);
@@ -56,7 +56,7 @@ public class Emulator {
         }
     }
 
-    public boolean executeInstruction() throws InstructionNotReadyException, InvalidRegisterWriteException, InvalidRegisterAccessException {
+    public boolean executeInstruction() throws InstructionNotReadyException, InvalidRegisterWriteException, InvalidRegisterAccessException, InvalidMemoryAccessException {
         if(emulatorState.getIP() < instructions.size() && !emulatorState.isHalted()) {
             instructions.get(emulatorState.getIP()).execute(emulatorState);
             emulatorState.incrementIP();

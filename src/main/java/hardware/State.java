@@ -1,6 +1,7 @@
 package main.java.hardware;
 
 import com.google.common.collect.ImmutableList;
+import main.java.exceptions.InvalidMemoryAccessException;
 import main.java.exceptions.InvalidRegisterAccessException;
 import main.java.exceptions.InvalidRegisterWriteException;
 
@@ -96,4 +97,22 @@ public class State {
         return halted;
     }
 
+    public int getMemoryValue(int address) throws InvalidMemoryAccessException {
+        try{
+            return stack[address];
+        }
+        catch(Exception e){
+            throw new InvalidMemoryAccessException(address);
+        }
+
+    }
+
+    public void setMemoryValue(int address, int value) throws InvalidMemoryAccessException{
+        try{
+            stack[address] = value;
+        }
+        catch(Exception e){
+            throw new InvalidMemoryAccessException(address);
+        }
+    }
 }

@@ -5,6 +5,8 @@ import main.java.exceptions.ImproperInstructionSizeException;
 import main.java.exceptions.ImproperInstructionValueException;
 import main.java.exceptions.OpCodeNotFoundException;
 import main.java.instruction.IInstructions.AddiInstruction;
+import main.java.instruction.IInstructions.LwInstruction;
+import main.java.instruction.IInstructions.SwInstruction;
 import main.java.instruction.RInstructions.AddInstruction;
 import main.java.instruction.SpecialInstructions.SyscallInstruction;
 
@@ -19,6 +21,8 @@ public class InstructionFactory {
     static final ImmutableMap<String, Class> instructionMap = new ImmutableMap.Builder<String, Class>()
             .put("000000", AddInstruction.class)
             .put("001000", AddiInstruction.class)
+            .put("100011", LwInstruction.class)
+            .put("101011", SwInstruction.class)
             .build();
     static final ImmutableMap<String, Class> specialInstructionMap = new ImmutableMap.Builder<String, Class>()
             .put("00000000000000000000000000001100", SyscallInstruction.class)

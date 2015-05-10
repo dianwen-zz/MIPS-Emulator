@@ -28,18 +28,18 @@ abstract public class Instruction {
         }
     }
 
-    abstract public void execute(State s) throws InstructionNotReadyException, InvalidRegisterAccessException, InvalidRegisterWriteException;
+    abstract public void execute(State s) throws InstructionNotReadyException, InvalidRegisterAccessException, InvalidRegisterWriteException, InvalidMemoryAccessException;
 
     private boolean isValidInstruction(String s) throws ImproperInstructionSizeException, ImproperInstructionValueException {
         if(s.length() != 32) {
             throw new ImproperInstructionSizeException(s.length());
         }
-        try {
+        /*try {
             Integer.parseInt(s,2);
         }
         catch (Exception e){
             throw new ImproperInstructionValueException(s);
-        }
+        }*/
         return true;
     }
 }
