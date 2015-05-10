@@ -11,10 +11,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import main.java.exceptions.InstructionNotReadyException;
-import main.java.exceptions.InstructionsCouldNotBeLoadedException;
-import main.java.exceptions.InvalidRegisterAccessException;
-import main.java.exceptions.InvalidRegisterWriteException;
 
 import java.io.File;
 
@@ -28,7 +24,7 @@ public class Main extends Application {
         Application.launch(args);
     }
 
-    private void startEmulation(File file) throws InstructionsCouldNotBeLoadedException {
+    private void startEmulation(File file){
         emulator = new Emulator(file);
         emulator.readyInstructions();
     }
@@ -49,11 +45,7 @@ public class Main extends Application {
                         configureFileChooser(fileChooser);
                         File file = fileChooser.showOpenDialog(stage);
                         if (file != null) {
-                            try {
-                                startEmulation(file);
-                            } catch (InstructionsCouldNotBeLoadedException e1) {
-                                e1.printStackTrace();
-                            }
+                            startEmulation(file);
                         }
                     }
                 });

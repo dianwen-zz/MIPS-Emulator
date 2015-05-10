@@ -6,6 +6,7 @@ import main.java.instruction.Instruction;
 import main.java.instruction.InstructionFactory;
 import main.java.hardware.State;
 import java.io.*;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 /**
@@ -17,11 +18,11 @@ public class Emulator {
     private ArrayList<Instruction> instructions;
     private State emulatorState;
 
-    public Emulator(File f) throws InstructionsCouldNotBeLoadedException {
+    public Emulator(File f) {
         this(f, new State());
     }
 
-    public Emulator(File f, State s) throws InstructionsCouldNotBeLoadedException {
+    public Emulator(File f, State s) {
         factory = new InstructionFactory();
         emulatorState = s;
         emulatorState.setSP(State.DEFAULT_STACK_SIZE -  1);
@@ -29,22 +30,16 @@ public class Emulator {
         try {
             loadInstructions(f);
         } catch (Exception e) {
-            //throw new InstructionsCouldNotBeLoadedException(f.getAbsolutePath());
             e.printStackTrace();
         }
     }
 
-    private void loadInstructions(File f) throws IOException, InstructionCannotBeCreatedException {
+    private void loadInstructions(File f) throws IOException, OpCodeNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         instructions = new ArrayList<>();
         try(BufferedReader br = new BufferedReader(new FileReader(f))) {
             String line = br.readLine();
             while (line != null) {
-                try {
-                    instructions.add(factory.createInstruction(line));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    //throw new InstructionCannotBeCreatedException(line);
-                }
+                instructions.add(factory.createInstruction(line));
                 line = br.readLine();
             }
         }
