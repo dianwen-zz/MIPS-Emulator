@@ -42,8 +42,6 @@ public class InstructionFactory {
     }
 
     private Instruction createInstruction(Class c, String instructionValue) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        Constructor constructor = c.getConstructor(String.class);
-        Object inst = constructor.newInstance(instructionValue);
-        return (Instruction) inst;
+        return (Instruction) c.getConstructor(String.class).newInstance(instructionValue);
     }
 }
